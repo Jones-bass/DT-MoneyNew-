@@ -9,7 +9,7 @@ export const SearchFormContainer = styled.form`
     border-radius: 6px;
     border: 0;
     background: ${props => props.theme.gray900};
-    color-adjust: ${props => props.theme.gray300};
+    color: ${props => props.theme.gray300};
     padding: 1rem;
 
 
