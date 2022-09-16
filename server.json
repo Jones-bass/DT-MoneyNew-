@@ -47,6 +47,22 @@
       "type": "outcome",
       "createdAt": "2022-07-30T13:38:57.560Z",
       "id": 6
+    },
+    {
+      "description": "Desenvolvimento APP DTMoney 02",
+      "price": 10000,
+      "category": "Salario",
+      "type": "income",
+      "createdAt": "2022-09-16T19:03:34.184Z",
+      "id": 7
+    },
+    {
+      "description": "Coxinha",
+      "price": 250,
+      "category": "Lanche",
+      "type": "outcome",
+      "createdAt": "2022-09-16T19:35:07.510Z",
+      "id": 8
     }
   ]
 }

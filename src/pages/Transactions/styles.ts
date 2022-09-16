@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const TransactionContainer = styled.main`
   width: 100%;
@@ -12,10 +12,10 @@ export const TransactionTable = styled.table`
   border-collapse: separate;
   border-spacing: 0 0.5rem;
   margin-top: 1.5rem;
-  
+
   td {
     padding: 1.25rem 2rem;
-    background: ${props => props.theme.gray700};
+    background: ${(props) => props.theme.gray700};
 
     &:first-child {
       border-bottom-left-radius: 6px;
@@ -26,14 +26,13 @@ export const TransactionTable = styled.table`
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
     }
-
   }
-  `
-  interface PriceHighLightProps {
-    variant: 'income' | 'outcome';
-  }
+`
+interface PriceHighLightProps {
+  variant: 'income' | 'outcome'
+}
 
-  export const PriceHighLight = styled.span<PriceHighLightProps>`
-    color: ${props => props.variant === 'income' ? 
-    props.theme.green300 : props.theme.red300}
-  `
+export const PriceHighLight = styled.span<PriceHighLightProps>`
+  color: ${(props) =>
+    props.variant === 'income' ? props.theme.green300 : props.theme.red300};
+`
