@@ -3,8 +3,26 @@ import { SearchFormContainer } from './styles'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
+
 import { TransactionsContext } from '../../../../contexts/TransactionsContext'
+
+/*
+* Por quê que um componente renderiza?
+- Hooks changed (mudou estado, contexto, reducer)
+- Props changed (mudou propiedades)
+- Parent rendered (Componente pai renderiza)
+
+* Qual o fluxo de renderização?
+- 1º React recria o HTML da interface daquele componente
+- 2º Compara a versão do HTML recria com a versão anterior
+- 3º Se mudou alguma coisa, ele reescreve o HTML na tela
+
+* Memo:
+- 0 Hook changed, Props Changed (deep comparison)
+- 0.1 Comparar a versão anterior dos hooks e props
+- 0.2 Se mudou algo, ele vai permitir a nova renderização
+*/
 
 const searchFromSchema = z.object({
   query: z.string(),
@@ -13,7 +31,12 @@ const searchFromSchema = z.object({
 type SearchFormInputs = z.infer<typeof searchFromSchema>
 
 export function SearchForm() {
-  const { fetchTransations } = useContext(TransactionsContext)
+  const fetchTransactions = useContextSelector(
+    TransactionsContext,
+    (context) => {
+      return context.fetchTransactions
+    },
+  )
 
   const {
     register,
@@ -24,7 +47,7 @@ export function SearchForm() {
   })
 
   async function handleSearchTransactions(data: SearchFormInputs) {
-    await fetchTransations(data.query)
+    await fetchTransactions(data.query)
   }
 
   return (
